@@ -10,21 +10,24 @@ class WebhookController < ApplicationController
     puts 'json: ' + json
     data = JSON.parse(CGI::unescape(json))
     puts 'data has been parsed'
-    notify_slack(data)
+    notify_slack('', create_bamboo_message(data))
     puts 'all done'
     head :ok
   end
 
   # expects application/json
   def pivotal
-    puts params[:message]
+    message = params[:message]
+    if message.include('accepted this') begin
+      slackbot_shipit_notification
+    end
     head :ok
   end
 
-  def notify_slack(data)
+  def notify_slack(message, data)
     puts 'in notify slack'
     notifier = Slack::Notifier.new(ENV['SLACK_WEBHOOK_ENDPOINT'])
-    notifier.ping '', attachments: [create_message(data)]
+    notifier.ping message, attachments: (data)
   end
 
   def create_message(data)
@@ -48,6 +51,10 @@ class WebhookController < ApplicationController
       fallback: title,
       color: colour
     }
+  end
+
+  def slackbot_shipit_notification
+    notify_slack(':shipit:')
   end
 
 end
