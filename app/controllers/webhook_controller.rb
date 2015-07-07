@@ -18,7 +18,7 @@ class WebhookController < ApplicationController
   # expects application/json
   def pivotal
     message = params[:message]
-    if message.include('accepted this') begin
+    if message.include('accepted this')
       slackbot_shipit_notification
     end
     head :ok
