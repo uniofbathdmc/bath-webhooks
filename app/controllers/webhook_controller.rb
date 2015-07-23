@@ -24,13 +24,13 @@ class WebhookController < ApplicationController
     head :ok
   end
 
-  def notify_slack(message, data)
+  def notify_slack(message, data = '')
     puts 'in notify slack'
     notifier = Slack::Notifier.new(ENV['SLACK_WEBHOOK_ENDPOINT'])
-    notifier.ping message, attachments: (data)
+    notifier.ping(message, attachments: (data))
   end
 
-  def create_message(data)
+  def create_bamboo_message(data)
     puts 'in create_message'
     puts JSON.pretty_generate(data)
     puts data['attachments'][0]['color']
