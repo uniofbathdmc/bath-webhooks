@@ -54,7 +54,7 @@ class WebhookController < ApplicationController
   end
 
   def slackbot_shipit_notification
-    notify_slack(':shipit:')
+    notify_slack('Time to ship to production!')
   end
 
 end
