@@ -2,16 +2,18 @@ require 'json'
 require 'slack-notifier'
 
 class WebhookController < ApplicationController
-
   # prefers application/json
   def bamboo
     puts 'processing incoming bamboo payload'
     json = params[:payload]
     puts 'json: ' + json
-    data = JSON.parse(CGI::unescape(json))
+    data = JSON.parse(CGI.unescape(json))
     puts 'data has been parsed'
     notify_slack('', create_bamboo_message(data))
     puts 'all done'
+
+    update_build_status
+
     head :ok
   end
 
@@ -37,25 +39,24 @@ class WebhookController < ApplicationController
       color: colour
     }
   end
-  
-  
+
+  def update_build_status
+    $time_built = DateTime.now
+  end
+
   # expects application/json
   def pivotal
     message = params[:message]
-    if message.include?('accepted this')
-      slackbot_shipit_notification
-    end
+    slackbot_shipit_notification if message.include?('accepted this')
     head :ok
   end
 
   def slackbot_shipit_notification
     notify_slack('Time to ship to production!')
   end
-  
+
   def notify_slack(message, data = '')
     notifier = Slack::Notifier.new(ENV['SLACK_WEBHOOK_ENDPOINT'])
     notifier.ping(message, attachments: (data))
   end
-
-
 end

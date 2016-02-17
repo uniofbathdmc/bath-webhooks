@@ -1,2 +1,14 @@
-<h1>Webhooks</h1>
-<p>pivotal and bamboo</p>
+<div id="output">
+</div>
+
+<%= javascript_tag do %>
+$(function() {
+
+  // milliseconds
+  var pollTime = 5000;
+  setInterval(function() {
+    $('#output').load('/welcome/build #output');
+  }, pollTime);
+
+});
+<% end %>
