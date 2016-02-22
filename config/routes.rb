@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#build'
+  root 'welcome#index'
 
   # Handle webhooks
   post 'webhook/bamboo'
