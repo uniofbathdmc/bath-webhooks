@@ -3,9 +3,9 @@ class WelcomeController < ApplicationController
   end
 
   def build
-    if $time_built.present?
+    if $build_info.present?
       limit = 1.minutes.ago
-      @recent_build = ($time_built > limit)
+      @recent_build = ($build_info[:time] > limit)
     else
       @recent_build = false
     end
