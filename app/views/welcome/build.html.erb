@@ -1,0 +1,7 @@
+<div id="output">
+<% if @recent_build %>
+  <%= render partial: 'shared/recent_build' %>
+<% else %>
+  <%= render partial: 'shared/no_recent_build' %>
+<% end %>
+</div>
