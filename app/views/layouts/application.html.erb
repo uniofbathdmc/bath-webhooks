@@ -1,13 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Webhooks</title>
+  <title>Beta Builder</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <%= csrf_meta_tags %>
+  <link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/b88bad85-b88d-4a23-aa6f-4d4a0469310c.css">
+  <link type="text/css" rel="stylesheet" href="http://beta.bath.ac.uk/origins/css/bath/apps/apps.css">
+<!-- sticky footer -->
+  <style>
+<!--
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -78px;
+}
+
+footer, .push {
+  height: 78px;
+}
+
+.wrapper + footer {
+  margin-bottom: 0;
+  padding: 1.44444rem 0
+}
+-->
+  </style>
 </head>
-<body class="<%= controller_name %> <%= action_name %>">
-
-<%= yield %>
-
+<body class="webhooks <%= controller_name %> <%= action_name %>">
+  <div class="wrapper">
+<!-- Header -->
+    <header>
+      <div class="row">
+        <div class="small-24 medium-10 large-6 column">
+          <img src="http://beta.bath.ac.uk/origins/universal/images/logo/uob-logo-inverse.svg" alt="University of Bath logo">
+        </div>
+        <div class="small-24 medium-14 large-10 column">
+          <span class="app-title">Beta builder</span>
+        </div>
+      </div>
+    </header>
+<!-- Main navigation -->
+    <nav class="site-nav">
+      <div class="row">
+        <div class="small-24 column">
+          <ul>
+            <li class="first active"><a href="http://fondor.bath.ac.uk:8082/">View build plans</a></li>
+            <li class="last"><a href="https://www.pivotaltracker.com/n/projects/1262572">View project in Pivotal</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<!-- Content -->
+    <main>
+      <%= yield %>
+    </main>
+    <div class="push"></div>
+  </div>
+<!-- Footer -->
+  <footer>
+    <div class="row">
+      <div class="small-24 large-8 column">
+        <p>&copy; University of Bath 2016</p>
+      </div>
+      <div class="small-24 large-16 column">
+        <nav>
+          <ul class="footernav">
+            <li><a href="http://www.bath.ac.uk/web/disclaimer/">Disclaimer</a></li>
+            <li><a href="http://www.bath.ac.uk/foi/">Freedom of information</a></li>
+            <li><a href="http://www.bath.ac.uk/web/privacy/">Privacy and cookie policy</a></li>
+            <li><a href="http://www.bath.ac.uk/index">A&ndash;Z</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
