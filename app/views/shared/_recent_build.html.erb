@@ -1,8 +1,30 @@
 <section class="summary-information">
   <div class="row">
     <div class="small--24 columns">
-      <h1>We built a thing!</h1>
-      <p class="summary"><%= $build_info[:text] %> at <%= $build_info[:time].strftime("%H:%M") %></p>
+      <h1>We built a thing and it didn't break!</h1>
+
+      <p class="summary">Details of our most recent build</p>
     </div>
   </div>
 </section>
+<section>
+            <div class="row">
+              <div class="small-20 small-offset-2 large-24 large-offset-0 column">
+                <table class="content-items">
+                  <caption>Details of our most recent build</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Build details</th>
+                      <th scope="col">Time stamp</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="item-type"><%= $build_info[:text] %></td>
+                      <td class="item-recent-action"><%= $build_info[:time].strftime("%H:%M") %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
