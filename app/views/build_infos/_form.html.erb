@@ -1,0 +1,29 @@
+<%= form_for(@build_info) do |f| %>
+  <% if @build_info.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@build_info.errors.count, "error") %> prohibited this build_info from being saved:</h2>
+
+      <ul>
+      <% @build_info.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :display %><br>
+    <%= f.text_area :display %>
+  </div>
+  <div class="field">
+    <%= f.label :colour %><br>
+    <%= f.text_field :colour %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.datetime_select :time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

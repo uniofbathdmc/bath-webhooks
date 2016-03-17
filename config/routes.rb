@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :build_infos
+
   root 'welcome#index'
 
   # Handle webhooks

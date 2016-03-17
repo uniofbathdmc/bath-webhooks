@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Display:</strong>
+  <%= @build_info.display %>
+</p>
+
+<p>
+  <strong>Colour:</strong>
+  <%= @build_info.colour %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @build_info.time %>
+</p>
+
+<%= link_to 'Edit', edit_build_info_path(@build_info) %> |
+<%= link_to 'Back', build_infos_path %>

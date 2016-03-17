@@ -1,14 +1,8 @@
 <section class="summary-information big">
   <div class="row">
     <div class="small--24 columns">
-
-    <% if $build_info.present? %>
-      <h1>Our latest improvements shipped at <%= $build_info[:time].strftime("%H:%M") %> today.</h1>
-    <% else %>
-      <h1>No deploys yet today</h1>
+      <h1>No deploys yet</h1>
       <p class="summary">This page will automatically update when new features are available.</p>
-    <% end %>
-
     </div>
   </div>
 </section>
