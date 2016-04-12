@@ -1,5 +1,5 @@
 <div id="output">
-<% if @recent_build %>
+<% if @builds.count > 0 %>
   <%= render partial: 'shared/recent_build' %>
 <% else %>
   <%= render partial: 'shared/no_recent_build' %>

@@ -13,7 +13,7 @@ class WebhookController < ApplicationController
     notify_slack('', msg)
     puts 'all done'
 
-    update_build_status(msg[:title], msg[:color])
+    update_build_infos(msg[:title], msg[:color])
 
     head :ok
   end
@@ -36,12 +36,13 @@ class WebhookController < ApplicationController
     }
   end
 
-  def update_build_status(text, colour)
-    $build_info = {
-      time: DateTime.now,
-      text: text,
-      colour: colour
-    }
+  def update_build_infos(text, colour)
+    build_info = BuildInfo.new
+    build_info.display = text
+    build_info.time = DateTime.now
+    build_info.colour = colour
+
+    build_info.save
   end
 
   # expects application/json
@@ -56,7 +57,9 @@ class WebhookController < ApplicationController
   end
 
   def notify_slack(message, data = '')
-    notifier = Slack::Notifier.new(ENV['SLACK_WEBHOOK_ENDPOINT'])
-    notifier.ping(message, attachments: [data])
+    unless ENV['SLACK_WEBHOOK_ENDPOINT'].blank?
+      notifier = Slack::Notifier.new(ENV['SLACK_WEBHOOK_ENDPOINT'])
+      notifier.ping(message, attachments: [data])
+    end
   end
 end

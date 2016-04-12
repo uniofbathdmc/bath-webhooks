@@ -2,7 +2,7 @@
   <div class="row">
     <div class="small--24 columns">
       <h1>New features available!</h1>
-      <p class="summary">Details of our most recent deployment</p>
+      <p class="summary">Our most recent changes were deployed at <%= @builds.first.time.strftime("%H:%M") %></p>
     </div>
   </div>
 </section>
@@ -10,18 +10,22 @@
   <div class="row">
     <div class="small-20 small-offset-2 large-24 large-offset-0 column">
       <table class="content-items">
-        <caption>Details of our most recent deployment</caption>
+        <caption>Details of our most recent deployments</caption>
         <thead>
           <tr>
-            <th scope="col">Build details</th>
+            <th scope="col">Recent deployments</th>
             <th scope="col">Time stamp</th>
           </tr>
         </thead>
         <tbody>
+
+        <% @builds.each do |build| %>
           <tr>
-            <td class="item-type"><%= $build_info[:text] %></td>
-            <td class="item-recent-action"><%= $build_info[:time].strftime("%H:%M") %></td>
+            <td class="item-type"><%= build.display %></td>
+            <td class="item-recent-action"><%= build.time.strftime("%A %-d %B at %H:%M") %></td>
           </tr>
+        <% end %>
+
         </tbody>
       </table>
     </div>

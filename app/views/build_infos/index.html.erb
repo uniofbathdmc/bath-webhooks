@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Build Infos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Display</th>
+      <th>Colour</th>
+      <th>Time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @build_infos.each do |build_info| %>
+      <tr>
+        <td><%= build_info.display %></td>
+        <td><%= build_info.colour %></td>
+        <td><%= build_info.time %></td>
+        <td><%= link_to 'Show', build_info %></td>
+        <td><%= link_to 'Edit', edit_build_info_path(build_info) %></td>
+        <td><%= link_to 'Destroy', build_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Build info', new_build_info_path %>
