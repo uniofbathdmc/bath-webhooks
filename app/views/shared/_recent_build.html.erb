@@ -2,7 +2,7 @@
   <div class="row">
     <div class="small--24 columns">
       <h1>New features available!</h1>
-      <p class="summary">Details of our most recent deployment</p>
+      <p class="summary">Our most recent changes were deployed at <%= @builds.first.time.strftime("%H:%M") %></p>
     </div>
   </div>
 </section>
@@ -13,7 +13,7 @@
         <caption>Details of our most recent deployments</caption>
         <thead>
           <tr>
-            <th scope="col">Build details</th>
+            <th scope="col">Recent deployments</th>
             <th scope="col">Time stamp</th>
           </tr>
         </thead>

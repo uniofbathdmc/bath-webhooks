@@ -3,6 +3,6 @@ class WelcomeController < ApplicationController
   end
 
   def build
-    @builds = BuildInfo.order(time: :desc).limit(10)
+    @builds = BuildInfo.order(time: :desc).limit(5)
   end
 end
