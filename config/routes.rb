@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   # Visualisations
   get 'welcome/build'
+  get 'welcome/grouped'
 end
