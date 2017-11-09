@@ -22,7 +22,7 @@
         <% @builds.each do |build| %>
           <tr>
             <td class="item-type"><%= build.display %></td>
-            <td class="item-recent-action"><%= build.time.strftime("%A %-d %B at %H:%M") %></td>
+            <td class="item-recent-action"><%= build.time.strftime("%H:%M") %></td>
           </tr>
         <% end %>
 
