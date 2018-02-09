@@ -1,5 +1,6 @@
 require 'json'
 require 'slack-notifier'
+require 'github_service'
 
 class WebhookController < ApplicationController
   # prefers application/json
@@ -61,5 +62,11 @@ class WebhookController < ApplicationController
       notifier = Slack::Notifier.new(ENV['SLACK_WEBHOOK_ENDPOINT'])
       notifier.ping(message, attachments: [data])
     end
+  end
+
+  # expects POST application/json
+  def github
+    GithubService.handle_payload(JSON.parse(request.body.read))
+    head :ok
   end
 end
