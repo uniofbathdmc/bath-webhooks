@@ -1,33 +1,37 @@
+# frozen_string_literal: true
+
 require 'net/http'
 
+# Service providing an endpoint for Github webhooks
 module GithubService
   KNOWN_PROJECTS = [
     ENV['TYPECASE_PIVOTAL_ID'], # Typecase
     ENV['TYPECASE_FOR_COURSES_PIVOTAL_ID'], # Typecase for Courses
     ENV['BLOGS_PIVOTAL_ID'], # Blogs
   ].freeze
-  PIVOTAL_API_URL = 'https://www.pivotaltracker.com/services/v5/'.freeze
+  PIVOTAL_API_URL = 'https://www.pivotaltracker.com/services/v5/'
   PIVOTAL_TOKEN = ENV['PIVOTAL_API_TOKEN'].freeze
   PIVOTAL_HEADER = { 'Content-Type' => 'application/json',
                      'X-TrackerToken' => PIVOTAL_TOKEN }.freeze
-  PIVOTAL_USERS = YAML.load(ENV['PIVOTAL_USER_IDS']).freeze
+  PIVOTAL_USERS = YAML.safe_load(ENV['PIVOTAL_USER_IDS']).freeze
 
   def self.handle_payload(payload)
-    if payload['review']['state'] == 'approved'
-      # Review is submitted or dismissed from "approved" state.
+    return unless payload['review']['state'] == 'approved'
+    # Review is submitted or dismissed from "approved" state.
 
-      # Read the PR comment to determine the affected stor(y|ies)
-      pr_comment = payload['pull_request']['body']
-      stories = pr_comment.scan(/\[[^\]]*\]/).map { |brace| brace.scan(/(?<=#)\d*/) }.flatten
-
-      stories.each do |story|
-        if payload['action'] == 'submitted'
-          add_reviewed_label(story, payload)
-        elsif payload['action'] == 'dismissed'
-          remove_reviewed_label(story, payload)
-        end
+    stories_from_payload(payload).each do |story|
+      if payload['action'] == 'submitted'
+        add_reviewed_label(story, payload)
+      elsif payload['action'] == 'dismissed'
+        remove_reviewed_label(story, payload)
       end
     end
+  end
+
+  # Read the PR comment to determine the affected stor(y|ies)
+  def self.stories_from_payload(payload)
+    pr_comment = payload['pull_request']['body']
+    pr_comment.scan(/\[[^\]]*\]/).map { |brace| brace.scan(/(?<=#)\d*/) }.flatten
   end
 
   def self.add_reviewed_label(story, payload)
@@ -42,12 +46,12 @@ module GithubService
     project = get_project_for_story(story)
     labels = get_labels_for_story(project, story)
     reviewed_label = labels.detect { |l| l['name'] == 'reviewed' }
-    if reviewed_label
-      reviewed_label_id = reviewed_label['id']
-      uri = URI.parse(PIVOTAL_API_URL + "projects/#{project}/stories/#{story}/labels/#{reviewed_label_id}")
-      make_pivotal_delete(uri)
-      write_removed_label_comment(project, story, payload)
-    end
+    return unless reviewed_label
+
+    reviewed_label_id = reviewed_label['id']
+    uri = URI.parse(PIVOTAL_API_URL + "projects/#{project}/stories/#{story}/labels/#{reviewed_label_id}")
+    make_pivotal_delete(uri)
+    write_removed_label_comment(project, story, payload)
   end
 
   def self.write_added_label_comment(project, story, payload)
