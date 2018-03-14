@@ -4,7 +4,7 @@ class BuildInfosController < ApplicationController
   # GET /build_infos
   # GET /build_infos.json
   def index
-    @build_infos = BuildInfo.all
+    @build_infos = BuildInfo.order(time: :desc)
   end
 
   # GET /build_infos/1
@@ -62,13 +62,14 @@ class BuildInfosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_build_info
-      @build_info = BuildInfo.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def build_info_params
-      params.require(:build_info).permit(:display, :colour, :time)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_build_info
+    @build_info = BuildInfo.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def build_info_params
+    params.require(:build_info).permit(:display, :colour, :time)
+  end
 end
