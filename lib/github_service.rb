@@ -8,6 +8,7 @@ module GithubService
     ENV['TYPECASE_PIVOTAL_ID'], # Typecase
     ENV['TYPECASE_FOR_COURSES_PIVOTAL_ID'], # Typecase for Courses
     ENV['BLOGS_PIVOTAL_ID'], # Blogs
+    ENV['PATTERN_LIBRARY_PIVOTAL_ID'], # Pattern library
   ].freeze
   PIVOTAL_API_URL = 'https://www.pivotaltracker.com/services/v5/'
   PIVOTAL_TOKEN = ENV['PIVOTAL_API_TOKEN'].freeze
@@ -30,8 +31,8 @@ module GithubService
 
   # Read the PR comment to determine the affected stor(y|ies)
   def self.stories_from_payload(payload)
-    pr_comment = payload['pull_request']['body']
-    pr_comment.scan(/\[[^\]]*\]/).map { |brace| brace.scan(/(?<=#)\d*/) }.flatten
+    pr_details = %w[title body].map { |field| payload['pull_request'][field] }
+    pr_details.map { |value| value.scan(/\[[^\]]*\]/).map { |brace| brace.scan(/(?<=#)\d*/) } }.flatten
   end
 
   def self.add_reviewed_label(story, payload)
