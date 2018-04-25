@@ -1,0 +1,16 @@
+<div class='repo-list'>
+  <% @repo_statuses.each do |repo_status| %>
+    <div class="repo-status <%= repo_class_from_commit_array(repo_status[:commits]) %>">
+      <p><%= repo_status[:name] %> - <%= repo_status[:descr] %></p>
+      <% if repo_status[:commits].present? %>
+        <div class="commit-list">
+          <ul>
+            <% repo_status[:commits].each do |msg| %>
+              <li><%= raw msg.gsub(/\n+/, '<br>') %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

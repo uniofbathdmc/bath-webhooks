@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/vcr/vcr/compare/master...1-x-stable
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.8.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 23 Apr 2018 09:19:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '57'
+      X-Ratelimit-Reset:
+      - '1524478736'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      Etag:
+      - W/"9ba77c6c348be1c02648ee33dd1c6f11"
+      Last-Modified:
+      - Mon, 26 Feb 2018 20:07:42 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Runtime-Rack:
+      - '0.179046'
+      X-Github-Request-Id:
+      - FFB6:3705:3A7A5E3:7F58316:5ADDA525
+    body:
+      encoding: ASCII-8BIT
+      string: '{"url":"https://api.github.com/repos/vcr/vcr/compare/master...1-x-stable","html_url":"https://github.com/vcr/vcr/compare/master...1-x-stable","permalink_url":"https://github.com/vcr/vcr/compare/vcr:b5da0bb...vcr:05f70d1","diff_url":"https://github.com/vcr/vcr/compare/master...1-x-stable.diff","patch_url":"https://github.com/vcr/vcr/compare/master...1-x-stable.patch","base_commit":{"sha":"b5da0bb0c672d0aa7932e603962c79383296b63a","commit":{"author":{"name":"Nicolas
+        Leger","email":"nicolasleger@users.noreply.github.com","date":"2018-02-26T20:07:42Z"},"committer":{"name":"Kurtis
+        Rainbolt-Greene","email":"kurtis@rainbolt-greene.online","date":"2018-02-26T20:07:42Z"},"message":"[CI]
+        Test against Ruby 2.5 (#696)","tree":{"sha":"50bf465a4a14fd36403aa0cb08f5ddf31f3b3e7a","url":"https://api.github.com/repos/vcr/vcr/git/trees/50bf465a4a14fd36403aa0cb08f5ddf31f3b3e7a"},"url":"https://api.github.com/repos/vcr/vcr/git/commits/b5da0bb0c672d0aa7932e603962c79383296b63a","comment_count":0,"verification":{"verified":false,"reason":"unsigned","signature":null,"payload":null}},"url":"https://api.github.com/repos/vcr/vcr/commits/b5da0bb0c672d0aa7932e603962c79383296b63a","html_url":"https://github.com/vcr/vcr/commit/b5da0bb0c672d0aa7932e603962c79383296b63a","comments_url":"https://api.github.com/repos/vcr/vcr/commits/b5da0bb0c672d0aa7932e603962c79383296b63a/comments","author":{"login":"nicolasleger","id":570901,"avatar_url":"https://avatars1.githubusercontent.com/u/570901?v=4","gravatar_id":"","url":"https://api.github.com/users/nicolasleger","html_url":"https://github.com/nicolasleger","followers_url":"https://api.github.com/users/nicolasleger/followers","following_url":"https://api.github.com/users/nicolasleger/following{/other_user}","gists_url":"https://api.github.com/users/nicolasleger/gists{/gist_id}","starred_url":"https://api.github.com/users/nicolasleger/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/nicolasleger/subscriptions","organizations_url":"https://api.github.com/users/nicolasleger/orgs","repos_url":"https://api.github.com/users/nicolasleger/repos","events_url":"https://api.github.com/users/nicolasleger/events{/privacy}","received_events_url":"https://api.github.com/users/nicolasleger/received_events","type":"User","site_admin":false},"committer":{"login":"krainboltgreene","id":334809,"avatar_url":"https://avatars1.githubusercontent.com/u/334809?v=4","gravatar_id":"","url":"https://api.github.com/users/krainboltgreene","html_url":"https://github.com/krainboltgreene","followers_url":"https://api.github.com/users/krainboltgreene/followers","following_url":"https://api.github.com/users/krainboltgreene/following{/other_user}","gists_url":"https://api.github.com/users/krainboltgreene/gists{/gist_id}","starred_url":"https://api.github.com/users/krainboltgreene/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/krainboltgreene/subscriptions","organizations_url":"https://api.github.com/users/krainboltgreene/orgs","repos_url":"https://api.github.com/users/krainboltgreene/repos","events_url":"https://api.github.com/users/krainboltgreene/events{/privacy}","received_events_url":"https://api.github.com/users/krainboltgreene/received_events","type":"User","site_admin":false},"parents":[{"sha":"8dab143460963af416937d2f7724b41d9eadb4d1","url":"https://api.github.com/repos/vcr/vcr/commits/8dab143460963af416937d2f7724b41d9eadb4d1","html_url":"https://github.com/vcr/vcr/commit/8dab143460963af416937d2f7724b41d9eadb4d1"}]},"merge_base_commit":{"sha":"246bb6d203eef83b6d967026da3071fc7f1795ed","commit":{"author":{"name":"Myron
+        Marston","email":"myron.marston@gmail.com","date":"2011-09-08T05:54:33Z"},"committer":{"name":"Myron
+        Marston","email":"myron.marston@gmail.com","date":"2011-09-08T06:02:53Z"},"message":"Use
+        default record mode of :once rather than specifying it in a bunch of places
+        where it''s not an important detail.","tree":{"sha":"c0b1d00f3f2ccdcdef989c76fb2da0ca587fcbaf","url":"https://api.github.com/repos/vcr/vcr/git/trees/c0b1d00f3f2ccdcdef989c76fb2da0ca587fcbaf"},"url":"https://api.github.com/repos/vcr/vcr/git/commits/246bb6d203eef83b6d967026da3071fc7f1795ed","comment_count":0,"verification":{"verified":false,"reason":"unsigned","signature":null,"payload":null}},"url":"https://api.github.com/repos/vcr/vcr/commits/246bb6d203eef83b6d967026da3071fc7f1795ed","html_url":"https://github.com/vcr/vcr/commit/246bb6d203eef83b6d967026da3071fc7f1795ed","comments_url":"https://api.github.com/repos/vcr/vcr/commits/246bb6d203eef83b6d967026da3071fc7f1795ed/comments","author":{"login":"myronmarston","id":49391,"avatar_url":"https://avatars0.githubusercontent.com/u/49391?v=4","gravatar_id":"","url":"https://api.github.com/users/myronmarston","html_url":"https://github.com/myronmarston","followers_url":"https://api.github.com/users/myronmarston/followers","following_url":"https://api.github.com/users/myronmarston/following{/other_user}","gists_url":"https://api.github.com/users/myronmarston/gists{/gist_id}","starred_url":"https://api.github.com/users/myronmarston/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/myronmarston/subscriptions","organizations_url":"https://api.github.com/users/myronmarston/orgs","repos_url":"https://api.github.com/users/myronmarston/repos","events_url":"https://api.github.com/users/myronmarston/events{/privacy}","received_events_url":"https://api.github.com/users/myronmarston/received_events","type":"User","site_admin":false},"committer":{"login":"myronmarston","id":49391,"avatar_url":"https://avatars0.githubusercontent.com/u/49391?v=4","gravatar_id":"","url":"https://api.github.com/users/myronmarston","html_url":"https://github.com/myronmarston","followers_url":"https://api.github.com/users/myronmarston/followers","following_url":"https://api.github.com/users/myronmarston/following{/other_user}","gists_url":"https://api.github.com/users/myronmarston/gists{/gist_id}","starred_url":"https://api.github.com/users/myronmarston/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/myronmarston/subscriptions","organizations_url":"https://api.github.com/users/myronmarston/orgs","repos_url":"https://api.github.com/users/myronmarston/repos","events_url":"https://api.github.com/users/myronmarston/events{/privacy}","received_events_url":"https://api.github.com/users/myronmarston/received_events","type":"User","site_admin":false},"parents":[{"sha":"43fea87ef502e69cce6173057702fc55013bfc69","url":"https://api.github.com/repos/vcr/vcr/commits/43fea87ef502e69cce6173057702fc55013bfc69","html_url":"https://github.com/vcr/vcr/commit/43fea87ef502e69cce6173057702fc55013bfc69"}]},"status":"diverged","ahead_by":2,"behind_by":1238,"total_commits":2,"commits":[{"sha":"c5282022f952f92c131963601a73376e453e0dca","commit":{"author":{"name":"Myron
+        Marston","email":"myron.marston@gmail.com","date":"2011-09-23T05:24:32Z"},"committer":{"name":"Myron
+        Marston","email":"myron.marston@gmail.com","date":"2011-09-23T05:25:26Z"},"message":"Only
+        build master and 1-x-stable branches.","tree":{"sha":"ab7724dcf0ab9233d0b84eec300ea903351c0978","url":"https://api.github.com/repos/vcr/vcr/git/trees/ab7724dcf0ab9233d0b84eec300ea903351c0978"},"url":"https://api.github.com/repos/vcr/vcr/git/commits/c5282022f952f92c131963601a73376e453e0dca","comment_count":0,"verification":{"verified":false,"reason":"unsigned","signature":null,"payload":null}},"url":"https://api.github.com/repos/vcr/vcr/commits/c5282022f952f92c131963601a73376e453e0dca","html_url":"https://github.com/vcr/vcr/commit/c5282022f952f92c131963601a73376e453e0dca","comments_url":"https://api.github.com/repos/vcr/vcr/commits/c5282022f952f92c131963601a73376e453e0dca/comments","author":{"login":"myronmarston","id":49391,"avatar_url":"https://avatars0.githubusercontent.com/u/49391?v=4","gravatar_id":"","url":"https://api.github.com/users/myronmarston","html_url":"https://github.com/myronmarston","followers_url":"https://api.github.com/users/myronmarston/followers","following_url":"https://api.github.com/users/myronmarston/following{/other_user}","gists_url":"https://api.github.com/users/myronmarston/gists{/gist_id}","starred_url":"https://api.github.com/users/myronmarston/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/myronmarston/subscriptions","organizations_url":"https://api.github.com/users/myronmarston/orgs","repos_url":"https://api.github.com/users/myronmarston/repos","events_url":"https://api.github.com/users/myronmarston/events{/privacy}","received_events_url":"https://api.github.com/users/myronmarston/received_events","type":"User","site_admin":false},"committer":{"login":"myronmarston","id":49391,"avatar_url":"https://avatars0.githubusercontent.com/u/49391?v=4","gravatar_id":"","url":"https://api.github.com/users/myronmarston","html_url":"https://github.com/myronmarston","followers_url":"https://api.github.com/users/myronmarston/followers","following_url":"https://api.github.com/users/myronmarston/following{/other_user}","gists_url":"https://api.github.com/users/myronmarston/gists{/gist_id}","starred_url":"https://api.github.com/users/myronmarston/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/myronmarston/subscriptions","organizations_url":"https://api.github.com/users/myronmarston/orgs","repos_url":"https://api.github.com/users/myronmarston/repos","events_url":"https://api.github.com/users/myronmarston/events{/privacy}","received_events_url":"https://api.github.com/users/myronmarston/received_events","type":"User","site_admin":false},"parents":[{"sha":"246bb6d203eef83b6d967026da3071fc7f1795ed","url":"https://api.github.com/repos/vcr/vcr/commits/246bb6d203eef83b6d967026da3071fc7f1795ed","html_url":"https://github.com/vcr/vcr/commit/246bb6d203eef83b6d967026da3071fc7f1795ed"}]},{"sha":"05f70d14cfd5c1a55920fd9fbdce9fd26a058001","commit":{"author":{"name":"Myron
+        Marston","email":"myron.marston@gmail.com","date":"2011-09-23T06:05:38Z"},"committer":{"name":"Myron
+        Marston","email":"myron.marston@gmail.com","date":"2011-09-23T06:05:38Z"},"message":"Remove
+        1.8.6 build since travis no longer supports it.","tree":{"sha":"85ffa0dab37b1d8f8a437f7d3c8ab0b25afceb3b","url":"https://api.github.com/repos/vcr/vcr/git/trees/85ffa0dab37b1d8f8a437f7d3c8ab0b25afceb3b"},"url":"https://api.github.com/repos/vcr/vcr/git/commits/05f70d14cfd5c1a55920fd9fbdce9fd26a058001","comment_count":0,"verification":{"verified":false,"reason":"unsigned","signature":null,"payload":null}},"url":"https://api.github.com/repos/vcr/vcr/commits/05f70d14cfd5c1a55920fd9fbdce9fd26a058001","html_url":"https://github.com/vcr/vcr/commit/05f70d14cfd5c1a55920fd9fbdce9fd26a058001","comments_url":"https://api.github.com/repos/vcr/vcr/commits/05f70d14cfd5c1a55920fd9fbdce9fd26a058001/comments","author":{"login":"myronmarston","id":49391,"avatar_url":"https://avatars0.githubusercontent.com/u/49391?v=4","gravatar_id":"","url":"https://api.github.com/users/myronmarston","html_url":"https://github.com/myronmarston","followers_url":"https://api.github.com/users/myronmarston/followers","following_url":"https://api.github.com/users/myronmarston/following{/other_user}","gists_url":"https://api.github.com/users/myronmarston/gists{/gist_id}","starred_url":"https://api.github.com/users/myronmarston/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/myronmarston/subscriptions","organizations_url":"https://api.github.com/users/myronmarston/orgs","repos_url":"https://api.github.com/users/myronmarston/repos","events_url":"https://api.github.com/users/myronmarston/events{/privacy}","received_events_url":"https://api.github.com/users/myronmarston/received_events","type":"User","site_admin":false},"committer":{"login":"myronmarston","id":49391,"avatar_url":"https://avatars0.githubusercontent.com/u/49391?v=4","gravatar_id":"","url":"https://api.github.com/users/myronmarston","html_url":"https://github.com/myronmarston","followers_url":"https://api.github.com/users/myronmarston/followers","following_url":"https://api.github.com/users/myronmarston/following{/other_user}","gists_url":"https://api.github.com/users/myronmarston/gists{/gist_id}","starred_url":"https://api.github.com/users/myronmarston/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/myronmarston/subscriptions","organizations_url":"https://api.github.com/users/myronmarston/orgs","repos_url":"https://api.github.com/users/myronmarston/repos","events_url":"https://api.github.com/users/myronmarston/events{/privacy}","received_events_url":"https://api.github.com/users/myronmarston/received_events","type":"User","site_admin":false},"parents":[{"sha":"c5282022f952f92c131963601a73376e453e0dca","url":"https://api.github.com/repos/vcr/vcr/commits/c5282022f952f92c131963601a73376e453e0dca","html_url":"https://github.com/vcr/vcr/commit/c5282022f952f92c131963601a73376e453e0dca"}]}],"files":[{"sha":"10c069fe70151e0e52127a7aa2340913daff466e","filename":".travis.yml","status":"modified","additions":5,"deletions":1,"changes":6,"blob_url":"https://github.com/vcr/vcr/blob/05f70d14cfd5c1a55920fd9fbdce9fd26a058001/.travis.yml","raw_url":"https://github.com/vcr/vcr/raw/05f70d14cfd5c1a55920fd9fbdce9fd26a058001/.travis.yml","contents_url":"https://api.github.com/repos/vcr/vcr/contents/.travis.yml?ref=05f70d14cfd5c1a55920fd9fbdce9fd26a058001","patch":"@@
+        -2,9 +2,13 @@ env: CUCUMBER_FORMAT=progress\n bundler_args: --without extras\n
+        script: \"bundle exec rake ci:build --trace\"\n rvm:\n-  - 1.8.6\n   - 1.8.7\n   -
+        1.9.2\n   - 1.9.3\n   - ree\n   - jruby\n+branches:\n+  only:\n+    - master\n+    -
+        1-x-stable\n+"}]}'
+    http_version: 
+  recorded_at: Mon, 23 Apr 2018 09:19:34 GMT
+recorded_with: VCR 4.0.0
