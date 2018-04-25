@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'github_api_service'
 
 class WelcomeController < ApplicationController

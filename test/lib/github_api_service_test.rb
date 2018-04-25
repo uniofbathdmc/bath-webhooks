@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require 'github_api_service'
 
@@ -6,7 +8,7 @@ class GithubApiServiceTest < ActiveSupport::TestCase
   def test_client_works
     client = GithubApiService.client
     repos = []
-    VCR.use_cassette('basic_request', record: :new_episodes) do
+    VCR.use_cassette('basic_request', record: :none) do
       repos = client.repos('uniofbathdmc')
     end
 
@@ -16,7 +18,7 @@ class GithubApiServiceTest < ActiveSupport::TestCase
 
   def test_repo_finds_name_and_description
     result = []
-    VCR.use_cassette('repo_info', record: :new_episodes) do
+    VCR.use_cassette('repo_info', record: :none) do
       result = GithubApiService.repo_details(repo: 'rails/rails')
     end
 
@@ -25,7 +27,7 @@ class GithubApiServiceTest < ActiveSupport::TestCase
 
   def test_missing_repo_reported
     result = []
-    VCR.use_cassette('missing_repo_info', record: :new_episodes) do
+    VCR.use_cassette('missing_repo_info', record: :none) do
       result = GithubApiService.repo_details(repo: 'rails/repo-that-doesnt-exist')
     end
 
@@ -34,8 +36,10 @@ class GithubApiServiceTest < ActiveSupport::TestCase
 
   def test_branch_compare_when_clean
     messages = []
-    VCR.use_cassette('clean_branch_compare', record: :new_episodes) do
-      messages = GithubApiService.branch_compare(repo: 'bkeepers/dotenv', base: 'master', head: 'release-2.0.2')
+    VCR.use_cassette('clean_branch_compare', record: :none) do
+      messages = GithubApiService.branch_compare(repo: 'bkeepers/dotenv',
+                                                 base: 'master',
+                                                 head: 'release-2.0.2')
     end
 
     assert_empty messages, 'Expected messages to not be empty'
@@ -43,11 +47,15 @@ class GithubApiServiceTest < ActiveSupport::TestCase
 
   def test_branch_compare_when_dirty
     messages = []
-    VCR.use_cassette('dirty_branch_compare', record: :new_episodes) do
-      messages = GithubApiService.branch_compare(repo: 'vcr/vcr', base: 'master', head: '1-x-stable')
+    VCR.use_cassette('dirty_branch_compare', record: :none) do
+      messages = GithubApiService.branch_compare(repo: 'vcr/vcr',
+                                                 base: 'master',
+                                                 head: '1-x-stable')
     end
 
     refute_empty messages, 'Expected messages to not be empty'
-    assert_equal ['Only build master and 1-x-stable branches.', 'Remove 1.8.6 build since travis no longer supports it.'], messages, 'Expected messages to be exactly as recorded'
+    assert_equal ['Only build master and 1-x-stable branches.', 'Remove 1.8.6 build since travis no longer supports it.'],
+                 messages,
+                 'Expected messages to be exactly as recorded'
   end
 end

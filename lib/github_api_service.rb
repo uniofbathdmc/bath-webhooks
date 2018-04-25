@@ -8,7 +8,7 @@ module GithubApiService
   def self.repo_details(repo:)
     begin
       repo = client.repository repo
-    rescue
+    rescue Octokit::Error
       return :not_found
     end
 
@@ -20,7 +20,7 @@ module GithubApiService
   def self.branch_compare(repo:, base:, head:)
     begin
       compare = client.compare(repo, base, head)
-    rescue
+    rescue Octokit::Error
       return :not_found
     end
 
@@ -28,8 +28,8 @@ module GithubApiService
   end
 
   def self.client
-    @@client ||= Octokit::Client.new(access_token: ENV['GITHUB_API_TOKEN'])
-    @@client
+    @client ||= Octokit::Client.new(access_token: ENV['GITHUB_API_TOKEN'])
+    @client
   end
 end
 
