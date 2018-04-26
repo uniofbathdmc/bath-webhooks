@@ -1,7 +1,7 @@
 <div class='repo-list'>
   <% @repo_statuses.each do |repo_status| %>
     <div class="repo-status <%= repo_class_from_commit_array(repo_status[:commits]) %>">
-      <p><%= repo_status[:name] %> - <%= repo_status[:descr] %></p>
+      <p class="repo-heading"><span class='repo-name'><%= repo_status[:name] %></span> <span class='repo-descr'><%= repo_status[:descr] %></span></p>
       <% if repo_status[:commits].present? %>
         <div class="commit-list">
           <ul>
