@@ -46,7 +46,6 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
-    dotenv (2.3.0)
     erubis (2.7.0)
     faraday (0.15.0)
       multipart-post (>= 1.2, < 3)
@@ -142,7 +141,6 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  dotenv
   jbuilder (~> 2.0)
   minitest-reporters
   octokit
