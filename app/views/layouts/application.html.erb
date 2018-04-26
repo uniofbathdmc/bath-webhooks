@@ -40,6 +40,49 @@ footer, .push {
   font-size: 36px;
   line-height: 55px;
 }
+
+.repo-list div, .repo-list p,
+.repo-list ul, .repo-list li {
+  margin: 0;
+  padding: 0;
+}
+.repo-list {
+  width: 70%;
+  margin: auto;
+}
+.repo-list .repo-status {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+.repo-status.dirty {
+  background-color: pink;
+}
+.repo-status.clean {
+  background-color: lightgreen;
+}
+.repo-list .repo-status .commit-list {
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+}
+.repo-list .commit-list ul {
+  margin-left: 15px; /* Enough for bullets to clear wrapping padding */
+}
+.repo-heading {
+  position: relative;
+}
+.repo-name {
+  font-weight: bold;
+  font-size: 2em;
+  font-family: Consolas,"Courier New",Courier,"Lucida Sans Typewriter","Lucida Typewriter",monospace;
+}
+.repo-descr {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+}
 -->
   </style>
 </head>

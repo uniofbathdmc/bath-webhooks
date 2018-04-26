@@ -14,7 +14,17 @@ group :development, :test do
   gem 'byebug'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # VCR allows test scripts to record real HTML responses for later replaying
+  gem 'vcr'
+  gem 'webmock'
+
+  # Test reports
+  gem 'minitest-reporters'
 end
+
+# Easy access to the Github API
+gem 'octokit'
 
 # Database config
 gem 'pg', '~> 0.11'

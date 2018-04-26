@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/bkeepers/dotenv/compare/master...release-2.0.2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.8.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 23 Apr 2018 10:04:49 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '45'
+      X-Ratelimit-Reset:
+      - '1524478736'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      Etag:
+      - W/"c9f68ceb3aef3a0cde400030396c3be6"
+      Last-Modified:
+      - Thu, 19 Apr 2018 22:37:32 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Runtime-Rack:
+      - '0.065149'
+      X-Github-Request-Id:
+      - CF55:3703:1B94B02:41BCC2A:5ADDAFC1
+    body:
+      encoding: ASCII-8BIT
+      string: '{"url":"https://api.github.com/repos/bkeepers/dotenv/compare/master...release-2.0.2","html_url":"https://github.com/bkeepers/dotenv/compare/master...release-2.0.2","permalink_url":"https://github.com/bkeepers/dotenv/compare/bkeepers:453a6e4...bkeepers:3bad8ee","diff_url":"https://github.com/bkeepers/dotenv/compare/master...release-2.0.2.diff","patch_url":"https://github.com/bkeepers/dotenv/compare/master...release-2.0.2.patch","base_commit":{"sha":"453a6e48b4813ae6e33310b2b8b17233c8208a83","commit":{"author":{"name":"Jonathan
+        Hoyt","email":"hoyt@github.com","date":"2018-04-19T22:37:32Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2018-04-19T22:37:32Z"},"message":"Merge
+        pull request #333 from bkeepers/version-2.3.0\n\nVersion 2.3.0","tree":{"sha":"0730b68d40dbf05feef93c5056fa4a61fee494ab","url":"https://api.github.com/repos/bkeepers/dotenv/git/trees/0730b68d40dbf05feef93c5056fa4a61fee494ab"},"url":"https://api.github.com/repos/bkeepers/dotenv/git/commits/453a6e48b4813ae6e33310b2b8b17233c8208a83","comment_count":0,"verification":{"verified":true,"reason":"valid","signature":"-----BEGIN
+        PGP SIGNATURE-----\n\nwsBcBAABCAAQBQJa2RotCRBK7hj4Ov3rIwAAdHIIAHutwc3u26uLJnoQOlEoULDb\n0xcOMawAfWOr0qpnTP8EVXzUFxQBWlZT0AnIPiRDHoVRIbN9iB4ryqn5j6JPUNaW\nmQsm5ZfhAtpk225yTNsihB/jBH2xBNuoL+KZOcV5e3Dx1XgXu71uNmNKlj8+ycdv\njDB1oiY/YltjWxYMf925E51y10AYSyPqoiOwDUqTI6n2RpIJ+/b+a0h2uV7GSUl1\nRKZdsZNdv4TSMNCkaeh5Ci2AI9VqzYuk0XiXlXaZlX33BEvvJQQPHR39bVl0cTDZ\nCXEjjR3TDTTZYchu8liIyH62D3WAjVPA5eo2CrL23TXB6WN270e/FoR1/jj0vZo=\n=2t6H\n-----END
+        PGP SIGNATURE-----\n","payload":"tree 0730b68d40dbf05feef93c5056fa4a61fee494ab\nparent
+        3f9fad97e3623e6f1988b6d076f358a016e4bc0c\nparent a7794c6d260c417a7ad5633d5bd3f2c618e8595e\nauthor
+        Jonathan Hoyt <hoyt@github.com> 1524177452 -0700\ncommitter GitHub <noreply@github.com>
+        1524177452 -0700\n\nMerge pull request #333 from bkeepers/version-2.3.0\n\nVersion
+        2.3.0"}},"url":"https://api.github.com/repos/bkeepers/dotenv/commits/453a6e48b4813ae6e33310b2b8b17233c8208a83","html_url":"https://github.com/bkeepers/dotenv/commit/453a6e48b4813ae6e33310b2b8b17233c8208a83","comments_url":"https://api.github.com/repos/bkeepers/dotenv/commits/453a6e48b4813ae6e33310b2b8b17233c8208a83/comments","author":{"login":"jonmagic","id":623,"avatar_url":"https://avatars1.githubusercontent.com/u/623?v=4","gravatar_id":"","url":"https://api.github.com/users/jonmagic","html_url":"https://github.com/jonmagic","followers_url":"https://api.github.com/users/jonmagic/followers","following_url":"https://api.github.com/users/jonmagic/following{/other_user}","gists_url":"https://api.github.com/users/jonmagic/gists{/gist_id}","starred_url":"https://api.github.com/users/jonmagic/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jonmagic/subscriptions","organizations_url":"https://api.github.com/users/jonmagic/orgs","repos_url":"https://api.github.com/users/jonmagic/repos","events_url":"https://api.github.com/users/jonmagic/events{/privacy}","received_events_url":"https://api.github.com/users/jonmagic/received_events","type":"User","site_admin":true},"committer":{"login":"web-flow","id":19864447,"avatar_url":"https://avatars3.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[{"sha":"3f9fad97e3623e6f1988b6d076f358a016e4bc0c","url":"https://api.github.com/repos/bkeepers/dotenv/commits/3f9fad97e3623e6f1988b6d076f358a016e4bc0c","html_url":"https://github.com/bkeepers/dotenv/commit/3f9fad97e3623e6f1988b6d076f358a016e4bc0c"},{"sha":"a7794c6d260c417a7ad5633d5bd3f2c618e8595e","url":"https://api.github.com/repos/bkeepers/dotenv/commits/a7794c6d260c417a7ad5633d5bd3f2c618e8595e","html_url":"https://github.com/bkeepers/dotenv/commit/a7794c6d260c417a7ad5633d5bd3f2c618e8595e"}]},"merge_base_commit":{"sha":"3bad8eeb7d3788379540e832315ab98f53572517","commit":{"author":{"name":"Brandon
+        Keepers","email":"brandon@opensoul.org","date":"2015-06-19T15:05:13Z"},"committer":{"name":"Brandon
+        Keepers","email":"brandon@opensoul.org","date":"2015-06-19T15:06:25Z"},"message":"Prepare
+        for 2.0.2 release","tree":{"sha":"3482a287b5c9fc6ac3e5a257f2086173264a2d04","url":"https://api.github.com/repos/bkeepers/dotenv/git/trees/3482a287b5c9fc6ac3e5a257f2086173264a2d04"},"url":"https://api.github.com/repos/bkeepers/dotenv/git/commits/3bad8eeb7d3788379540e832315ab98f53572517","comment_count":0,"verification":{"verified":false,"reason":"unsigned","signature":null,"payload":null}},"url":"https://api.github.com/repos/bkeepers/dotenv/commits/3bad8eeb7d3788379540e832315ab98f53572517","html_url":"https://github.com/bkeepers/dotenv/commit/3bad8eeb7d3788379540e832315ab98f53572517","comments_url":"https://api.github.com/repos/bkeepers/dotenv/commits/3bad8eeb7d3788379540e832315ab98f53572517/comments","author":{"login":"bkeepers","id":173,"avatar_url":"https://avatars0.githubusercontent.com/u/173?v=4","gravatar_id":"","url":"https://api.github.com/users/bkeepers","html_url":"https://github.com/bkeepers","followers_url":"https://api.github.com/users/bkeepers/followers","following_url":"https://api.github.com/users/bkeepers/following{/other_user}","gists_url":"https://api.github.com/users/bkeepers/gists{/gist_id}","starred_url":"https://api.github.com/users/bkeepers/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/bkeepers/subscriptions","organizations_url":"https://api.github.com/users/bkeepers/orgs","repos_url":"https://api.github.com/users/bkeepers/repos","events_url":"https://api.github.com/users/bkeepers/events{/privacy}","received_events_url":"https://api.github.com/users/bkeepers/received_events","type":"User","site_admin":true},"committer":{"login":"bkeepers","id":173,"avatar_url":"https://avatars0.githubusercontent.com/u/173?v=4","gravatar_id":"","url":"https://api.github.com/users/bkeepers","html_url":"https://github.com/bkeepers","followers_url":"https://api.github.com/users/bkeepers/followers","following_url":"https://api.github.com/users/bkeepers/following{/other_user}","gists_url":"https://api.github.com/users/bkeepers/gists{/gist_id}","starred_url":"https://api.github.com/users/bkeepers/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/bkeepers/subscriptions","organizations_url":"https://api.github.com/users/bkeepers/orgs","repos_url":"https://api.github.com/users/bkeepers/repos","events_url":"https://api.github.com/users/bkeepers/events{/privacy}","received_events_url":"https://api.github.com/users/bkeepers/received_events","type":"User","site_admin":true},"parents":[{"sha":"d2e45491eb8eefe1751875a682c49d6b8d7817f8","url":"https://api.github.com/repos/bkeepers/dotenv/commits/d2e45491eb8eefe1751875a682c49d6b8d7817f8","html_url":"https://github.com/bkeepers/dotenv/commit/d2e45491eb8eefe1751875a682c49d6b8d7817f8"}]},"status":"behind","ahead_by":0,"behind_by":169,"total_commits":0,"commits":[],"files":[]}'
+    http_version: 
+  recorded_at: Mon, 23 Apr 2018 10:04:49 GMT
+recorded_with: VCR 4.0.0

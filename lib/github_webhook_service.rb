@@ -3,7 +3,7 @@
 require 'net/http'
 
 # Service providing an endpoint for Github webhooks
-module GithubService
+module GithubWebhookService
   KNOWN_PROJECTS = [
     ENV['TYPECASE_PIVOTAL_ID'], # Typecase
     ENV['TYPECASE_FOR_COURSES_PIVOTAL_ID'], # Typecase for Courses

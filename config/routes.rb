@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 
   # Visualisations
   get 'welcome/build'
+  get 'welcome/repo_statuses'
 end
