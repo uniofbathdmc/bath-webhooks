@@ -1,4 +1,5 @@
 <div class='repo-list'>
+  <div class="updated-at">Updated at: <%= Time.current.in_time_zone.strftime('%Y-%m-%d %H:%M:%S %Z') %></div>
   <% @repo_statuses.each do |repo_status| %>
     <div class="repo-status <%= repo_class_from_commit_array(repo_status[:commits]) %>">
       <p class="repo-heading"><span class='repo-name'><%= repo_status[:name] %></span> <span class='repo-descr'><%= repo_status[:descr] %></span></p>

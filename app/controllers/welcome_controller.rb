@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'github_api_service'
+require 'gitlab_api_service'
 
 class WelcomeController < ApplicationController
   REPOS_TO_CHECK = YAML.safe_load(ENV['REPOS_TO_CHECK']).freeze
@@ -15,11 +15,11 @@ class WelcomeController < ApplicationController
 
   def repo_statuses
     @repo_statuses = REPOS_TO_CHECK.map do |repo_hash|
-      details = GithubApiService.repo_details(repo: repo_hash['name'])
+      details = GitlabApiService.repo_details(repo: repo_hash['name'])
       {
         name: details[0],
         descr: details[1],
-        commits: GithubApiService.branch_compare(repo: repo_hash['name'],
+        commits: GitlabApiService.branch_compare(repo: repo_hash['name'],
                                                  base: repo_hash['base'],
                                                  head: repo_hash['head'])
       }
