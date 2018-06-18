@@ -26,6 +26,9 @@ end
 # Easy access to the Github API
 gem 'octokit'
 
+# Easy access to the Gitlab API
+gem 'gitlab'
+
 # Database config
 gem 'pg', '~> 0.11'
 
