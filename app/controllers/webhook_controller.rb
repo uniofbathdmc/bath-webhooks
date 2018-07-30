@@ -1,6 +1,7 @@
 require 'json'
 require 'slack-notifier'
 require 'github_webhook_service'
+require 'gitlab_webhook_service'
 
 class WebhookController < ApplicationController
   # prefers application/json
@@ -67,6 +68,12 @@ class WebhookController < ApplicationController
   # expects POST application/json
   def github
     GithubWebhookService.handle_payload(JSON.parse(request.body.read))
+    head :ok
+  end
+
+  # expects POST application/json
+  def gitlab
+    GitlabWebhookService.handle_payload(JSON.parse(request.body.read))
     head :ok
   end
 end
