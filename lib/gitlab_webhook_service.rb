@@ -36,7 +36,9 @@ module GitlabWebhookService
   # Read the MR title and description to determine the affected stor(y|ies)
   def self.stories_from_payload(payload)
     mr_details = %w[title description].map { |field| payload['object_attributes'][field] }
-    mr_details.map { |value| value.scan(/\[[^\]]*\]/).map { |brace| brace.scan(/(?<=#)\d*/) } }.flatten
+    stories = mr_details.map { |value| value.scan(/\[[^\]]*\]/).map { |brace| brace.scan(/(?<=#)\d*/) } }.flatten
+    Rails.logger.info("Story IDs found: #{stories.join(', ')}")
+    stories
   end
 
   def self.add_reviewed_label(story, payload)
@@ -101,9 +103,13 @@ module GitlabWebhookService
   end
 
   def self.make_pivotal_post(uri, data)
+    Rails.logger.info("Posting to : #{uri}")
+    Rails.logger.info("Posting with data: #{data}")
     request = Net::HTTP::Post.new(uri.request_uri, PIVOTAL_HEADER)
     request.body = data.to_json
-    pivotal_http.request(request)
+    resp = pivotal_http.request(request)
+    Rails.logger.info("Response code: #{resp.code}")
+    Rails.logger.info("Response: #{resp.body}")
   end
 
   def self.make_pivotal_delete(uri)
