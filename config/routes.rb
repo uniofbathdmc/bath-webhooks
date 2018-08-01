@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'webhook/bamboo'
   post 'webhook/pivotal'
   post 'webhook/github'
+  post 'webhook/gitlab'
 
   # Visualisations
   get 'welcome/build'
