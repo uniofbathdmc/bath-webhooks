@@ -36,9 +36,7 @@ module GitlabWebhookService
   # Read the MR title and description to determine the affected stor(y|ies)
   def self.stories_from_payload(payload)
     mr_details = %w[title description].map { |field| payload['object_attributes'][field] }
-    stories = mr_details.map { |value| value.scan(/\[[^\]]*\]/).map { |brace| brace.scan(/(?<=#)\d*/) } }.flatten
-    Rails.logger.info("Story IDs found: #{stories.join(', ')}")
-    stories
+    mr_details.map { |value| value.scan(/\[[^\]]*\]/).map { |brace| brace.scan(/(?<=#)\d*/) } }.flatten
   end
 
   def self.add_reviewed_label(story, payload)
@@ -76,7 +74,7 @@ module GitlabWebhookService
   end
 
   def self.get_user_id_from_payload(payload)
-    PIVOTAL_USERS[payload['username']]
+    PIVOTAL_USERS[payload['user']['username']]
   end
 
   def self.get_project_for_story(story)
