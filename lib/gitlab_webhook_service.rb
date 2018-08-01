@@ -101,13 +101,9 @@ module GitlabWebhookService
   end
 
   def self.make_pivotal_post(uri, data)
-    Rails.logger.info("Posting to : #{uri}")
-    Rails.logger.info("Posting with data: #{data}")
     request = Net::HTTP::Post.new(uri.request_uri, PIVOTAL_HEADER)
     request.body = data.to_json
-    resp = pivotal_http.request(request)
-    Rails.logger.info("Response code: #{resp.code}")
-    Rails.logger.info("Response: #{resp.body}")
+    pivotal_http.request(request)
   end
 
   def self.make_pivotal_delete(uri)
