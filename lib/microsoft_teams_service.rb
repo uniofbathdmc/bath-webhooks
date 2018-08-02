@@ -17,20 +17,21 @@ module MicrosoftTeamsService
   def self.gitlab_section(review_data)
     {
       activityImage: review_data[:gitlab_user_avatar_url],
-      activityTitle: "*Merge Request [!#{review_data[:gitlab_mr_number]}](#{review_data[:gitlab_mr_url]}) reviewed OK by #{review_data[:gitlab_user_name]} (#{review_data[:gitlab_user]})",
+      activityTitle: "Merge Request [!#{review_data[:gitlab_mr_number]}](#{review_data[:gitlab_mr_url]}) reviewed OK by #{review_data[:gitlab_user_name]} (#{review_data[:gitlab_user]})",
       activitySubtitle: "in [#{review_data[:gitlab_project_path]}](#{review_data[:gitlab_project_url]})"
     }
   end
 
   def self.pivotal_section(story_id)
     {
-      activityImage: 'https://bath-webhooks.herokuapp.com/Tracker_Icon.svg',
+      activityImage: 'https://bath-webhooks.herokuapp.com/tracker_icon.png',
       activtyTitle: "[##{story_id}](https://www.pivotaltracker.com/story/show/#{story_id}"
     }
   end
 
   def self.send_card(data)
     request = Net::HTTP::Post.new(TEAMS_WEBHOOK_URL, TEAMS_HEADER)
+  Rails.logger.info("Sending Teams the following payload: #{data}")
     request.body = (common_data.merge data).to_json
     teams_http.request(request)
   end
