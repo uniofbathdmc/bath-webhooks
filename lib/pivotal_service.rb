@@ -14,15 +14,15 @@ module PivotalService
                      'X-TrackerToken' => PIVOTAL_TOKEN }.freeze
   PIVOTAL_USERS = YAML.safe_load(ENV['PIVOTAL_USER_IDS']).freeze
 
-  def self.add_reviewed_label(story, user_id)
+  def self.add_reviewed_label(story, user_name)
     project = get_project_for_story(story)
     uri = URI.parse(PIVOTAL_API_URL + "projects/#{project}/stories/#{story}/labels")
     data = { name: 'reviewed' }
     make_pivotal_post(uri, data)
-    write_added_label_comment(project, story, user_id)
+    write_added_label_comment(project, story, user_name)
   end
 
-  def self.remove_reviewed_label(story, user_id)
+  def self.remove_reviewed_label(story, user_name)
     project = get_project_for_story(story)
     labels = get_labels_for_story(project, story)
     reviewed_label = labels.detect { |l| l['name'] == 'reviewed' }
@@ -31,18 +31,18 @@ module PivotalService
     reviewed_label_id = reviewed_label['id']
     uri = URI.parse(PIVOTAL_API_URL + "projects/#{project}/stories/#{story}/labels/#{reviewed_label_id}")
     make_pivotal_delete(uri)
-    write_removed_label_comment(project, story, user_id)
+    write_removed_label_comment(project, story, user_name)
   end
 
-  def self.write_added_label_comment(project, story, user_id)
+  def self.write_added_label_comment(project, story, user_name)
     uri = URI.parse(PIVOTAL_API_URL + "projects/#{project}/stories/#{story}/comments")
-    data = { text: 'Reviewed OK', person_id: user_id }
+    data = { text: 'Reviewed OK', person_id: PIVOTAL_USERS[user_name] }
     make_pivotal_post(uri, data)
   end
 
-  def self.write_removed_label_comment(project, story, user_id)
+  def self.write_removed_label_comment(project, story, user_name)
     uri = URI.parse(PIVOTAL_API_URL + "projects/#{project}/stories/#{story}/comments")
-    data = { text: 'Dismissed review', person_id: user_id }
+    data = { text: 'Dismissed review', person_id: PIVOTAL_USERS[user_name] }
     make_pivotal_post(uri, data)
   end
 

@@ -12,12 +12,12 @@ module GitlabWebhookService
 
     return unless old_label_names.include?('reviewed') != new_label_names.include?('reviewed')
 
-    user_id = get_user_id_from_payload(payload)
+    user_name = get_user_name_from_payload(payload)
     stories_from_payload(payload).each do |story|
       if new_label_names.include?('reviewed')
-        PivotalService.add_reviewed_label(story, user_id)
+        PivotalService.add_reviewed_label(story, user_name)
       else
-        PivotalService.remove_reviewed_label(story, user_id)
+        PivotalService.remove_reviewed_label(story, user_name)
       end
     end
   end
@@ -28,7 +28,7 @@ module GitlabWebhookService
     mr_details.map { |value| value.scan(/\[[^\]]*\]/).map { |brace| brace.scan(/(?<=#)\d*/) } }.flatten
   end
 
-  def self.get_user_id_from_payload(payload)
-    PIVOTAL_USERS[payload['user']['username']]
+  def self.get_user_name_from_payload(payload)
+    payload['user']['username']
   end
 end
