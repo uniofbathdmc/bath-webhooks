@@ -25,13 +25,12 @@ module MicrosoftTeamsService
   def self.pivotal_section(story_id)
     {
       activityImage: 'https://bath-webhooks.herokuapp.com/tracker_icon.png',
-      activtyTitle: "[##{story_id}](https://www.pivotaltracker.com/story/show/#{story_id}"
+      activtyTitle: "[##{story_id}](https://www.pivotaltracker.com/story/show/#{story_id})"
     }
   end
 
   def self.send_card(data)
     request = Net::HTTP::Post.new(TEAMS_WEBHOOK_URL, TEAMS_HEADER)
-  Rails.logger.info("Sending Teams the following payload: #{data}")
     request.body = (common_data.merge data).to_json
     teams_http.request(request)
   end
