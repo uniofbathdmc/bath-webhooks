@@ -9,12 +9,12 @@ module GithubWebhookService
     return unless payload['review']['state'] == 'approved'
     # Review is submitted or dismissed from "approved" state.
 
-    user_id = get_user_id_from_payload(payload)
+    user_name = get_user_name_from_payload(payload)
     stories_from_payload(payload).each do |story|
       if payload['action'] == 'submitted'
-        add_reviewed_label(story, user_id)
+        add_reviewed_label(story, user_name)
       elsif payload['action'] == 'dismissed'
-        remove_reviewed_label(story, user_id)
+        remove_reviewed_label(story, user_name)
       end
     end
   end
@@ -25,7 +25,7 @@ module GithubWebhookService
     pr_details.map { |value| value.scan(/\[[^\]]*\]/).map { |brace| brace.scan(/(?<=#)\d*/) } }.flatten
   end
 
-  def self.get_user_id_from_payload(payload)
-    PIVOTAL_USERS[payload['review']['user']['login']]
+  def self.get_user_name_from_payload(payload)
+    payload['review']['user']['login']
   end
 end
