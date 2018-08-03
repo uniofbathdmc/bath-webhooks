@@ -1,4 +1,5 @@
 require 'net/http'
+require 'pivotal_service'
 
 module MicrosoftTeamsService
   TEAMS_WEBHOOK_URL = ENV['TEAMS_WEBHOOK_URL']
@@ -25,7 +26,8 @@ module MicrosoftTeamsService
   def self.pivotal_section(story_id)
     {
       activityImage: 'https://bath-webhooks.herokuapp.com/tracker_icon.png',
-      activityTitle: "[##{story_id}](https://www.pivotaltracker.com/story/show/#{story_id})"
+      activityTitle: PivotalService.get_story_title(story_id),
+      activitySummary: "[##{story_id}](https://www.pivotaltracker.com/story/show/#{story_id})"
     }
   end
 
