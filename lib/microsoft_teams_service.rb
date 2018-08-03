@@ -32,6 +32,7 @@ module MicrosoftTeamsService
   def self.send_card(data)
     request = Net::HTTP::Post.new(TEAMS_WEBHOOK_URL, TEAMS_HEADER)
     request.body = (common_data.merge data).to_json
+    Rails.logger.info("Outbound POST #{TEAMS_WEBHOOK_URL}: #{request.body}")
     teams_http.request(request)
   end
 
