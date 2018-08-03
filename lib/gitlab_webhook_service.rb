@@ -46,7 +46,8 @@ module GitlabWebhookService
       gitlab_project_path: payload['project']['path_with_namespace'],
       gitlab_project_url: payload['project']['web_url'],
       gitlab_mr_number: payload['object_attributes']['iid'],
-      gitlab_mr_url: payload['object_attributes']['url']
+      gitlab_mr_url: payload['object_attributes']['url'],
+      gitlab_mr_title: payload['object_attributes']['title']
     }
   end
 end

@@ -19,7 +19,7 @@ module MicrosoftTeamsService
     {
       activityImage: review_data[:gitlab_user_avatar_url],
       activityTitle: "Merge Request [!#{review_data[:gitlab_mr_number]}](#{review_data[:gitlab_mr_url]}) reviewed OK by #{review_data[:gitlab_user_name]} (#{review_data[:gitlab_user]})",
-      activitySubtitle: "in [#{review_data[:gitlab_project_path]}](#{review_data[:gitlab_project_url]})"
+      activitySubtitle: "'#{review_data[:gitlab_mr_title]}' in [#{review_data[:gitlab_project_path]}](#{review_data[:gitlab_project_url]})"
     }
   end
 
