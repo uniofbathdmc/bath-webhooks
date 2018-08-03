@@ -25,7 +25,7 @@ module MicrosoftTeamsService
   def self.pivotal_section(story_id)
     {
       activityImage: 'https://bath-webhooks.herokuapp.com/tracker_icon.png',
-      activtyTitle: "[##{story_id}](https://www.pivotaltracker.com/story/show/#{story_id})"
+      activityTitle: "[##{story_id}](https://www.pivotaltracker.com/story/show/#{story_id})"
     }
   end
 
