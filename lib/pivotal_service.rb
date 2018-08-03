@@ -49,7 +49,7 @@ module PivotalService
   end
 
   def self.url_for_story(story)
-    PIVOTAL_API_URL + "projects/#{project_id_for_story(story)}/stories/#{story}" }
+    PIVOTAL_API_URL + "projects/#{project_id_for_story(story)}/stories/#{story}"
   end
 
   def self.project_id_for_story(story)
