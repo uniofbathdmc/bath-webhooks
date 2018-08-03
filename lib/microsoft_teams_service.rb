@@ -27,7 +27,7 @@ module MicrosoftTeamsService
     {
       activityImage: 'https://bath-webhooks.herokuapp.com/tracker_icon.png',
       activityTitle: PivotalService.get_story_title(story_id),
-      activitySummary: "[##{story_id}](https://www.pivotaltracker.com/story/show/#{story_id})"
+      activitySubtitle: "[##{story_id}](https://www.pivotaltracker.com/story/show/#{story_id}) in #{PivotalService.get_project_name(PivotalService.project_id_for_story(story_id))}"
     }
   end
 
