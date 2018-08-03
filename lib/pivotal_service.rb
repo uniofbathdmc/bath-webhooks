@@ -14,53 +14,70 @@ module PivotalService
                      'X-TrackerToken' => PIVOTAL_TOKEN }.freeze
   PIVOTAL_USERS = YAML.safe_load(ENV['PIVOTAL_USER_IDS']).freeze
 
+  # Class member hash from story IDs to their API URLs. Probably only lasts one request, but means we
+  # don't have to spam Pivotal to get the full story URL with project repeatedly.
+  @story_urls = {}
+
   def self.add_reviewed_label(story, user_name)
-    project = get_project_for_story(story)
-    uri = URI.parse(PIVOTAL_API_URL + "projects/#{project}/stories/#{story}/labels")
+    uri = URI.parse(url_for_story(story))
     data = { name: 'reviewed' }
     make_pivotal_post(uri, data)
-    write_added_label_comment(project, story, user_name)
+    write_added_label_comment(story, user_name)
   end
 
   def self.remove_reviewed_label(story, user_name)
-    project = get_project_for_story(story)
-    labels = get_labels_for_story(project, story)
+    labels = get_labels_for_story(story)
     reviewed_label = labels.detect { |l| l['name'] == 'reviewed' }
     return unless reviewed_label
 
     reviewed_label_id = reviewed_label['id']
-    uri = URI.parse(PIVOTAL_API_URL + "projects/#{project}/stories/#{story}/labels/#{reviewed_label_id}")
+    uri = URI.parse(url_for_story(story) + "/labels/#{reviewed_label_id}")
     make_pivotal_delete(uri)
-    write_removed_label_comment(project, story, user_name)
+    write_removed_label_comment(story, user_name)
   end
 
-  def self.write_added_label_comment(project, story, user_name)
-    uri = URI.parse(PIVOTAL_API_URL + "projects/#{project}/stories/#{story}/comments")
+  def self.write_added_label_comment(story, user_name)
+    uri = URI.parse(url_for_story(story) + '/comments')
     data = { text: 'Reviewed OK', person_id: PIVOTAL_USERS[user_name] }
     make_pivotal_post(uri, data)
   end
 
-  def self.write_removed_label_comment(project, story, user_name)
-    uri = URI.parse(PIVOTAL_API_URL + "projects/#{project}/stories/#{story}/comments")
+  def self.write_removed_label_comment(story, user_name)
+    uri = URI.parse(url_for_story(story) + '/comments')
     data = { text: 'Dismissed review', person_id: PIVOTAL_USERS[user_name] }
     make_pivotal_post(uri, data)
   end
 
-  def self.get_project_for_story(story)
-    KNOWN_PROJECTS.detect do |proj_id|
-      uri = URI.parse(PIVOTAL_API_URL + "projects/#{proj_id}/stories/#{story}")
-      response = make_pivotal_get(uri)
+  def self.url_for_story(story)
+    return @story_urls[story] if @story_urls.key? story
+    urls = KNOWN_PROJECTS.map { |proj_id| PIVOTAL_API_URL + "projects/#{proj_id}/stories/#{story}" }
+    story_url = urls.detect do |url|
+      response = make_pivotal_get(URI.parse(url))
       response.code_type == Net::HTTPOK
     end
+
+    # Implicitly return story_url
+    @story_urls[story] = story_url
   end
 
-  def self.get_labels_for_story(project, story)
-    uri = URI.parse(PIVOTAL_API_URL + "projects/#{project}/stories/#{story}/labels")
+  def self.get_labels_for_story(story)
+    uri = URI.parse(url_for_story(story) + '/labels')
     resp = make_pivotal_get(uri)
     if resp.code_type == Net::HTTPOK
       JSON.parse(resp.read_body)
     else
       []
+    end
+  end
+
+  def self.get_story_title(story_id)
+    uri = URI.parse(url_for_story(story_id))
+    resp = make_pivotal_get(uri)
+    if resp.code_type == Net::HTTPOK
+      story_data = JSON.parse(resp.read_body)
+      story_data['name']
+    else
+      ''
     end
   end
 
