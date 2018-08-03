@@ -66,17 +66,20 @@ module PivotalService
 
   def self.make_pivotal_get(uri)
     request = Net::HTTP::Get.new(uri.request_uri, PIVOTAL_HEADER)
+    Rails.logger.info("Outbound GET #{uri.request_uri}")
     pivotal_http.request(request)
   end
 
   def self.make_pivotal_post(uri, data)
     request = Net::HTTP::Post.new(uri.request_uri, PIVOTAL_HEADER)
     request.body = data.to_json
+    Rails.logger.info("Outbound POST #{uri.request_uri}: #{request.body}")
     pivotal_http.request(request)
   end
 
   def self.make_pivotal_delete(uri)
     request = Net::HTTP::Delete.new(uri.request_uri, PIVOTAL_HEADER)
+    Rails.logger.info("Outbound DELETE #{uri.request_uri}")
     pivotal_http.request(request)
   end
 
