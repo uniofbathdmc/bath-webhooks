@@ -19,15 +19,17 @@ module PivotalService
   @story_projects = {}
 
   def self.add_reviewed_label(story, user_name)
+    return false if get_reviewed_label(story)
+
     uri = URI.parse(url_for_story(story) + '/labels')
     data = { name: 'reviewed' }
     make_pivotal_post(uri, data)
     write_added_label_comment(story, user_name)
+    true
   end
 
   def self.remove_reviewed_label(story, user_name)
-    labels = get_labels_for_story(story)
-    reviewed_label = labels.detect { |l| l['name'] == 'reviewed' }
+    reviewed_label = get_reviewed_label(story)
     return unless reviewed_label
 
     reviewed_label_id = reviewed_label['id']
@@ -62,6 +64,12 @@ module PivotalService
 
     # Implicitly return proj_id
     @story_projects[story] = proj_id
+  end
+
+  # Find and return the reviewed label for a story, if it exists
+  def self.get_reviewed_label(story)
+    labels = get_labels_for_story(story)
+    labels.detect { |l| l['name'] == 'reviewed' }
   end
 
   def self.get_labels_for_story(story)
