@@ -8,19 +8,23 @@ require 'microsoft_teams_service'
 module GitlabWebhookService
   def self.handle_payload(payload)
     # We're currently handling only Merge Request changes - +/- reviewed label
-    old_label_names = payload['changes']['labels']['previous'].map { |l| l['title'] }
-    new_label_names = payload['changes']['labels']['current'].map { |l| l['title'] }
+    label_changes = payload['changes']['labels']
+    return unless label_changes
+
+    old_label_names = label_changes['previous'].map { |l| l['title'] }
+    new_label_names = label_changes['current'].map { |l| l['title'] }
 
     return unless old_label_names.include?('reviewed') != new_label_names.include?('reviewed')
 
     user_name = get_user_name_from_payload(payload)
     story_ids = stories_from_payload(payload)
     if new_label_names.include?('reviewed')
+      made_change = false
       story_ids.each do |story|
-        PivotalService.add_reviewed_label(story, user_name)
+        made_change ||= PivotalService.add_reviewed_label(story, user_name)
       end
 
-      MicrosoftTeamsService.send_reviewed_card(teams_card_data_from_payload(payload), stories: story_ids)
+      MicrosoftTeamsService.send_reviewed_card(teams_card_data_from_payload(payload), stories: story_ids) if made_change
     else
       stories_from_payload(payload).each do |story|
         PivotalService.remove_reviewed_label(story, user_name)
