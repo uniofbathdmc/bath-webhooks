@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '~> 2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.7.0'
+gem 'rails', '~> 4.2.11.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
