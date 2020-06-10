@@ -33,4 +33,3 @@ gem 'gitlab'
 
 # Database config
 gem 'pg', '~> 0.11'
-
