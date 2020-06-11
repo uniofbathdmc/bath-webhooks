@@ -34,3 +34,6 @@ gem 'gitlab'
 # Database config
 gem 'pg', '~> 0.11'
 
+# JS compressor
+gem 'uglifier'
+
