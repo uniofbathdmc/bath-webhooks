@@ -23,8 +23,6 @@ group :development, :test do
   gem 'vcr'
   gem 'webmock'
 
-  gem 'listen'
-
   # Test reports
   gem 'minitest-reporters'
 end
